@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "rootDir": ".",
+        "outDir": "./dist",
+        "allowJs": true,
+        "esModuleInterop": true,
+        "lib": [
+            "ES2022",
+        ],
+        "typeRoots": [
+            "./@types",
+            "./node_modules/@types"
+        ],
+    },
+    "includes": [
+        "./**/*"
+    ],
+    "exclude": [
+        "./node_modules/**/*",
+        "./dist/**/*"
+    ]
+}
