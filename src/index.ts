@@ -35,7 +35,6 @@ function replaceAllObjects(input) {
             result[replaceKey(obj)] = replaceAllObjects(input[obj]);
         }
         else {
-            console.log('here 2')
             result[replaceKey(obj)] = input[obj];
         }
     }
