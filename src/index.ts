@@ -12,27 +12,27 @@ export function encodeDots(input: any) {
     }
 
     if (typeof input === 'object' && !Array.isArray(input)) {
-        return replaceAllObjects(input)
+        return replaceAllKeys(input)
     }
 
     if (Array.isArray(input)) {
-        return replaceAllObjectsList(input)
+        return replaceAllInList(input)
     }
 
 
     return input;
 }
 
-function replaceAllObjects(input) {
+function replaceAllKeys(input) {
     var result = {};
 
     for (let obj in input) {
 
         if (Array.isArray(input[obj])) {
-            result[obj] = replaceAllObjectsList(input[obj])
+            result[obj] = replaceAllInList(input[obj])
         }
         else if (typeof input[obj] == "object" && !Array.isArray(input)) {
-            result[replaceKey(obj)] = replaceAllObjects(input[obj]);
+            result[replaceKey(obj)] = replaceAllKeys(input[obj]);
         }
         else {
             result[replaceKey(obj)] = input[obj];
@@ -42,10 +42,10 @@ function replaceAllObjects(input) {
     return result
 }
 
-function replaceAllObjectsList(input: Array<Object>) {
+function replaceAllInList(input: Array<Object>) {
     return Object.entries(input).map(([key, value]) => {
         if (typeof value == "object") {
-            return replaceAllObjects(value);
+            return replaceAllKeys(value);
         }
         else {
             return replaceKey(value)
